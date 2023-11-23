@@ -17,7 +17,7 @@ format = 2
 tile_set = ExtResource("3_i6fom")
 format = 2
 
-[node name="Danger" type="TileMap" parent="."]
+[node name="Danger" type="TileMap" parent="." groups=["danger"]]
 tile_set = ExtResource("4_7rd4n")
 format = 2
 

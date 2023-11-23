@@ -35,7 +35,7 @@ func spawn_items() -> void:
 		var item_type := Item.ItemType.CHERRY if type == "cherry" else Item.ItemType.GEM
 		var item = item_scene.instantiate()
 		add_child(item)
-		item.init(item_type, $Items.map_to_local(cell))
+		item.init(item_type	, $Items.map_to_local(cell))
 		item.picked_up.connect(self._on_item_picked_up)
 	
 func _on_item_picked_up() -> void:

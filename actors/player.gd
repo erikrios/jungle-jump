@@ -42,6 +42,12 @@ func _physics_process(delta: float) -> void:
 		var collision := get_slide_collision(i)
 		if collision.get_collider().is_in_group("danger"):
 			hurt()
+		if collision.get_collider().is_in_group("enemies"):
+			if position.y < collision.get_collider().position.y:
+				collision.get_collider().take_damage()
+				velocity.y = -200
+			else:
+				hurt()
 	
 func change_state(new_state: PlayerState) -> void:
 	state = new_state

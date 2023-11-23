@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4sib5kcwqyje"]
+[gd_scene load_steps=3 format=3 uid="uid://4sib5kcwqyje"]
 
 [ext_resource type="PackedScene" uid="uid://c2p86ftro03fc" path="res://levels/level_base.tscn" id="1_kv3ry"]
+[ext_resource type="PackedScene" uid="uid://bf48ivijjbnt" path="res://enemies/enemy.tscn" id="2_esso0"]
 
 [node name="Level01" instance=ExtResource("1_kv3ry")]
 
@@ -12,7 +13,16 @@ position = Vector2(-4, -5)
 layer_0/tile_data = PackedInt32Array(2359299, 0, 0, 2359303, 0, 0, 2097170, 1, 0, 2097195, 1, 0, 1900594, 1, 0, 2031675, 1, 0, 2097223, 1, 0, 1835092, 1, 0, 1835105, 1, 0, 1966186, 1, 0, 2097262, 1, 0, 2162803, 1, 0, 2228344, 0, 0, 2228349, 0, 0, 2228355, 0, 0, 1835097, 0, 0, 1966144, 0, 0, 2031670, 0, 0, 2293790, 0, 0, 2293795, 0, 0, 2293799, 0, 0, 2293784, 0, 0)
 
 [node name="Danger" parent="." index="3"]
-layer_0/tile_data = PackedInt32Array(2424865, 589824, 10, 2424885, 589824, 10, 2424879, 458752, 12, 2424904, 458752, 12, 2424910, 589824, 12, 2424940, 458752, 12, 2424945, 589824, 10, 2424950, 589824, 12)
+layer_0/tile_data = PackedInt32Array(2424865, 589824, 10, 2424904, 458752, 12, 2424910, 589824, 12, 2424940, 458752, 12, 2424945, 589824, 10, 2424950, 589824, 12)
 
 [node name="SpawnPoint" parent="." index="5"]
 position = Vector2(67, 471)
+
+[node name="Enemy" parent="." index="6" instance=ExtResource("2_esso0")]
+position = Vector2(446, 545)
+
+[node name="Enemy2" parent="." index="7" instance=ExtResource("2_esso0")]
+position = Vector2(803, 569)
+
+[node name="Enemy3" parent="." index="8" instance=ExtResource("2_esso0")]
+position = Vector2(1969, 575)

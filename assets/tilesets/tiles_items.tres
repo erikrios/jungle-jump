@@ -12,7 +12,6 @@ texture = ExtResource("1_mqvnq")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eo83j"]
 texture = ExtResource("2_mhnjv")
 0:0/0 = 0
-0:0/0/custom_data_0 = "gem"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0eoa"]
 texture = ExtResource("3_jfw7h")

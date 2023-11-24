@@ -7,9 +7,13 @@ class_name Player
 @export var jump_speed := -300
 @export var max_jumps := 2
 @export var double_jump_factor := 1.5
+@export var climb_speed := 50
+
 var jump_count := 0
 
-enum PlayerState {IDLE, RUN, JUMP, HURT, DEAD}
+var is_on_ladder := false
+
+enum PlayerState {IDLE, RUN, JUMP, CLIMB, HURT, DEAD}
 
 var state := PlayerState.IDLE
 
@@ -28,7 +32,8 @@ func _ready() -> void:
 	change_state(PlayerState.IDLE)
 	
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
+	if state != PlayerState.CLIMB:
+		velocity.y += gravity * delta
 	get_input()
 	
 	move_and_slide()
@@ -73,6 +78,8 @@ func change_state(new_state: PlayerState) -> void:
 			$JumpSound.play()
 			$AnimationPlayer.play("jump_up")
 			jump_count = 1
+		PlayerState.CLIMB:
+			$AnimationPlayer.play("climb")
 		PlayerState.DEAD:
 			died.emit()
 			hide()
@@ -84,6 +91,9 @@ func get_input() -> void:
 	var right := Input.is_action_pressed("right")
 	var left := Input.is_action_pressed("left")
 	var jump := Input.is_action_just_pressed("jump")
+	
+	var up := Input.is_action_pressed("climb")
+	var down := Input.is_action_pressed("crouch")
 	
 	# movement occurs in all states
 	velocity.x = 0
@@ -111,6 +121,23 @@ func get_input() -> void:
 	# transtition to JUMP when in the air
 	if state in [PlayerState.IDLE, PlayerState.RUN] and !is_on_floor():
 		change_state(PlayerState.JUMP)
+		
+	if up and state != PlayerState.CLIMB and is_on_ladder:
+		change_state(PlayerState.CLIMB)
+		
+	if state == PlayerState.CLIMB:
+		if up:
+			velocity.y = -climb_speed
+			$AnimationPlayer.play("climb")
+		elif down:
+			velocity.y = climb_speed
+			$AnimationPlayer.play("climb")
+		else:
+			velocity.y = 0
+			$AnimationPlayer.stop()
+	
+	if state == PlayerState.CLIMB and not is_on_ladder:
+		change_state(PlayerState.IDLE)
 
 func reset(_position: Vector2):
 	position = _position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p4ysfuwsfe8i"]
+[gd_scene load_steps=15 format=3 uid="uid://p4ysfuwsfe8i"]
 
 [ext_resource type="Script" path="res://actors/player.gd" id="1_l7vlt"]
 [ext_resource type="Texture2D" uid="uid://dw84loqh7yo8m" path="res://assets/player_sheet.png" id="1_ud88g"]
@@ -103,9 +103,27 @@ tracks/0/keys = {
 "values": [13, 18]
 }
 
+[sub_resource type="Animation" id="Animation_7u7d7"]
+resource_name = "climb"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5lkbk"]
 _data = {
 "RESET": SubResource("Animation_io655"),
+"climb": SubResource("Animation_7u7d7"),
 "hurt": SubResource("Animation_o57lt"),
 "idle": SubResource("Animation_ns2tv"),
 "jump_down": SubResource("Animation_8oy2b"),

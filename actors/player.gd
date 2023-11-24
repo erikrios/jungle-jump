@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	if state == PlayerState.JUMP and is_on_floor():
 		change_state(PlayerState.IDLE)
 		jump_count = 0
+		$Dust.emitting = true
 		
 	if state == PlayerState.JUMP and velocity.y > 0:
 		$AnimationPlayer.play("jump_down")

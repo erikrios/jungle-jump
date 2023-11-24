@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://4sib5kcwqyje"]
+[gd_scene load_steps=4 format=3 uid="uid://4sib5kcwqyje"]
 
 [ext_resource type="PackedScene" uid="uid://c2p86ftro03fc" path="res://levels/level_base.tscn" id="1_kv3ry"]
 [ext_resource type="PackedScene" uid="uid://bf48ivijjbnt" path="res://enemies/enemy.tscn" id="2_esso0"]
+[ext_resource type="PackedScene" uid="uid://duve70lb6cg22" path="res://items/moving_platform.tscn" id="3_c3b4u"]
 
 [node name="Level01" instance=ExtResource("1_kv3ry")]
 
@@ -26,3 +27,6 @@ position = Vector2(803, 569)
 
 [node name="Enemy3" parent="." index="8" instance=ExtResource("2_esso0")]
 position = Vector2(1969, 575)
+
+[node name="MovingPlatform" parent="." index="13" instance=ExtResource("3_c3b4u")]
+position = Vector2(1577, 446)

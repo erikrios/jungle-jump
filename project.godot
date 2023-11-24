@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Jungle-jump"
+run/main_scene="res://ui/title.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://game_state.gd"
 
 [display]
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvvia3c7xhx0n"]
+[gd_scene load_steps=10 format=3 uid="uid://cvvia3c7xhx0n"]
 
+[ext_resource type="Script" path="res://ui/title.gd" id="1_elv52"]
 [ext_resource type="Texture2D" uid="uid://cokbnb78vwro2" path="res://assets/environment/back.png" id="1_tiunn"]
 [ext_resource type="Texture2D" uid="uid://dqhi6jt116j3y" path="res://assets/environment/middle.png" id="2_esa8l"]
 [ext_resource type="FontFile" uid="uid://dn5ejfrfxcj1w" path="res://assets/Kenney Thick.ttf" id="3_tqpql"]
@@ -127,6 +128,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_elv52")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -157,10 +159,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -42.0
-offset_right = 360.0
-offset_bottom = 42.0
+offset_left = 216.0
+offset_top = 282.0
+offset_right = 936.0
+offset_bottom = 366.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Jungle Jump"

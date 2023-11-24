@@ -47,6 +47,7 @@ func spawn_items() -> void:
 			item.picked_up.connect(self._on_item_picked_up)
 	
 func _on_item_picked_up() -> void:
+	$PickupSound.play()
 	score += 1
 
 func _on_door_entered(body: PhysicsBody2D) -> void:

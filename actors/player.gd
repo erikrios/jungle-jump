@@ -57,6 +57,7 @@ func change_state(new_state: PlayerState) -> void:
 		PlayerState.RUN:
 			$AnimationPlayer.play("run")
 		PlayerState.HURT:
+			$HurtSound.play()
 			$AnimationPlayer.play("hurt")
 			velocity.y = -200
 			velocity.x = -100 * sign(velocity.x)
@@ -64,6 +65,7 @@ func change_state(new_state: PlayerState) -> void:
 			await get_tree().create_timer(0.5).timeout
 			change_state(PlayerState.IDLE)
 		PlayerState.JUMP:
+			$JumpSound.play()
 			$AnimationPlayer.play("jump_up")
 		PlayerState.DEAD:
 			died.emit()

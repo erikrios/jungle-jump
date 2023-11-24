@@ -5,6 +5,9 @@ class_name Player
 @export var gravity := 750
 @export var run_speed := 150
 @export var jump_speed := -300
+@export var max_jumps := 2
+@export var double_jump_factor := 1.5
+var jump_count := 0
 
 enum PlayerState {IDLE, RUN, JUMP, HURT, DEAD}
 
@@ -32,6 +35,7 @@ func _physics_process(delta: float) -> void:
 
 	if state == PlayerState.JUMP and is_on_floor():
 		change_state(PlayerState.IDLE)
+		jump_count = 0
 		
 	if state == PlayerState.JUMP and velocity.y > 0:
 		$AnimationPlayer.play("jump_down")
@@ -67,6 +71,7 @@ func change_state(new_state: PlayerState) -> void:
 		PlayerState.JUMP:
 			$JumpSound.play()
 			$AnimationPlayer.play("jump_up")
+			jump_count = 1
 		PlayerState.DEAD:
 			died.emit()
 			hide()
@@ -87,6 +92,11 @@ func get_input() -> void:
 	if left:
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
+	if jump and state == PlayerState.JUMP and jump_count < max_jumps and jump_count > 0:
+		$JumpSound.play()
+		$AnimationPlayer.play("jump_up")
+		velocity.y = jump_speed / double_jump_factor
+		jump_count += 1
 	# only allow jumping when on the ground
 	if jump and is_on_floor():
 		change_state(PlayerState.JUMP)

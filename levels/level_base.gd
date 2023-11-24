@@ -40,3 +40,4 @@ func spawn_items() -> void:
 	
 func _on_item_picked_up() -> void:
 	score += 1
+
